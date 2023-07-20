@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddgyp68xonxpm"]
+
+[ext_resource type="PackedScene" uid="uid://cgcv2cybxk4or" path="res://scenes/level_0.tscn" id="1_s8f4l"]
+[ext_resource type="PackedScene" uid="uid://11owygk64ae0" path="res://scenes/golf_ball.tscn" id="2_ght2k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x3fjl"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_7l8md"]
+sky_material = SubResource("ProceduralSkyMaterial_x3fjl")
+
+[sub_resource type="Environment" id="Environment_470j2"]
+background_mode = 2
+sky = SubResource("Sky_7l8md")
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.21
+ssao_intensity = 1.53
+ssao_power = 3.44609
+glow_enabled = true
+
+[node name="Golf_course" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_470j2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+shadow_bias = 0.02
+
+[node name="Golf_ball" parent="." instance=ExtResource("2_ght2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.761)
+metadata/_edit_lock_ = true
+
+[node name="Level_0" parent="." instance=ExtResource("1_s8f4l")]
